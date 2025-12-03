@@ -63,8 +63,8 @@ export default function BookDetail({ route, navigation }) {
 
   const tabHeaderMap = useMemo(
     () => ({
-      contents: columnHeaders[4] || '',
       author: columnHeaders[3] || '',
+      contents: columnHeaders[4] || '',
       other: columnHeaders[5] || '',
     }),
     [columnHeaders]
@@ -81,6 +81,7 @@ export default function BookDetail({ route, navigation }) {
         contents: book.contents || '',
         plot: book.plot || '',
         tableOfContents: book.tableOfContents || '',
+        other: book.other || "",
       });
       setLoading(false);
       
@@ -111,6 +112,7 @@ export default function BookDetail({ route, navigation }) {
                 contents: data.contents || prev.contents || '',
                 plot: data.plot || prev.plot || '',
                 tableOfContents: data.tableOfContents || prev.tableOfContents || '',
+                other: data.other || prev.other || '',
               }));
             }
           })
@@ -166,7 +168,7 @@ export default function BookDetail({ route, navigation }) {
         return 'Author Info';
       case 'other':
         if (details?.other) return 'Other Information';
-        return 'other';
+        return 'Other';
       default:
         return '';
     }
@@ -225,8 +227,7 @@ export default function BookDetail({ route, navigation }) {
           <View style={styles.tabContent}>
             <Text style={styles.tabContentTitle}>{getTabTitle('other')}</Text>
             <Text style={styles.tabContentText}>
-              {details?.other || details?.contents || details?.description || 
-                'Other information is not available.'}
+              {details?.other || 'Other information is not available.'}
             </Text>
           </View>
         );

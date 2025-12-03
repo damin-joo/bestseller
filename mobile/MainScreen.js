@@ -74,22 +74,9 @@ export default function MainScreen({ navigation }) {
     [country]
   );
 
-  const detailsTitle = useMemo(() => {
-    if (!filteredData.length) return null;
-    const row = filteredData[0];
-    return {
-      image: row[0] || '',
-      title: row[1] || '',
-      author: row[2] || '',
-      authorInfo: row[3] || '',
-      description: row[4] || '',
-      moreInfo: row[5] || '',
-    };
-  }, [filteredData]);
-
   const books = useMemo(
     () =>
-      filteredData.slice(1).map(row => ({
+      filteredData.map(row => ({
         image: row[0] || '',
         title: row[1] || '',
         author: row[2] || '',
@@ -161,6 +148,7 @@ export default function MainScreen({ navigation }) {
               authorInfo: item.authorInfo,
               publisherReview: item.publisherReview,
               plot: item.plot,
+              other: item.moreInfo,
             },
           });
         }}
@@ -213,6 +201,7 @@ export default function MainScreen({ navigation }) {
               authorInfo: item.authorInfo,
               publisherReview: item.publisherReview,
               plot: item.plot,
+              other: item.moreInfo,
             };
             toggleBookmark(bookData);
           }}

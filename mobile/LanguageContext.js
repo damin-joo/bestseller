@@ -101,7 +101,7 @@ export const LanguageProvider = ({ children }) => {
     const blockIndex = language;
     const startIndex = 2 + blockIndex * 5;
 
-    const rawHeaderRow = data[0] ?? [];
+    const rawHeaderRow = data[1] ?? [];
     const headerSlice = rawHeaderRow.slice(startIndex, startIndex + 5);
     const headerRow = [rawHeaderRow[1] ?? '', ...headerSlice];
     while (headerRow.length < 6) {
@@ -109,7 +109,10 @@ export const LanguageProvider = ({ children }) => {
     }
     setColumnHeaders(headerRow);
 
-    const rowsWithoutHeader = data.slice(1);
+    // Slice from index 2 to skip:
+    // Index 0: Language grouping row (Original, Korean, etc.)
+    // Index 1: Header row (Ranking, Image URL, Title, etc.)
+    const rowsWithoutHeader = data.slice(2);
     const filtered = filterColumns(rowsWithoutHeader, startIndex);
     setFilteredData(filtered);
   }, [data, language]);
