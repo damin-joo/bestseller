@@ -235,6 +235,9 @@ export default function BookDetail({ route, navigation }) {
                 )}
               </View>
             )}
+            <View style={[styles.adContainer, { marginTop: 20 }]}>
+              <MyAds type="adaptive" size={BannerAdSize.LARGE_BANNER} />
+            </View>
           </View>
         );
       case 'other':

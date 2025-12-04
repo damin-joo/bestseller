@@ -109,6 +109,11 @@ npm start서버는 `http://localhost:4000`에서 실행됩니다.
 cd mobile
 npm install react-native-google-mobile-ads
 npm run android  # Android
+
+- on android device
+adb devices  -shows connected devices
+
+
 # 또는
 npm run ios      # iOS### 3. 배치 크롤러 실행 (선택사항)
 
