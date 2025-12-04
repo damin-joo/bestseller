@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
+import MyAds from './BannerAd';
+import { BannerAdSize } from 'react-native-google-mobile-ads';
 
 export default function LoadingScreen() {
   const dot1Opacity = useRef(new Animated.Value(0.3)).current;
@@ -66,6 +68,9 @@ export default function LoadingScreen() {
           <Animated.View style={[styles.dot, { opacity: dot2Opacity }]} />
           <Animated.View style={[styles.dot, { opacity: dot3Opacity }]} />
         </View>
+        {/* <View style={styles.adContainer}>
+            <MyAds type="native" size={BannerAdSize.MEDIUM_RECTANGLE}/>
+        </View> */}
       </View>
     </View>
   );
@@ -98,5 +103,10 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     backgroundColor: '#4285F4',
+  },
+  adContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
 });

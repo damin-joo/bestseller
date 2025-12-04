@@ -14,6 +14,8 @@ import SettingsPage, { LANGUAGE_OPTIONS } from './SettingsPage';
 import LoadingScreen from './LoadingScreen';
 import { useBookmark } from './BookmarkContext';
 import { useLanguage } from './LanguageContext';
+import MyAds from './BannerAd';
+import { BannerAdSize } from 'react-native-google-mobile-ads';
 
 const COUNTRY_TABS = [
   { label: 'KOR', index: 0 },
@@ -299,12 +301,22 @@ export default function MainScreen({ navigation }) {
 
         {/* 책 목록 */}
         <FlatList
+          ListHeaderComponent={
+            <View style={styles.adContainer}>
+              <MyAds type="adaptive" size={BannerAdSize.BANNER} />
+            </View>
+          }
           data={visibleBooks}
           renderItem={renderBookItem}
           keyExtractor={(item, index) => `${activeCountryTab}-${index}`}
           contentContainerStyle={styles.listContainer}
+          ListFooterComponent={
+            <View style={styles.adContainer}>
+              <MyAds type="adaptive" size={BannerAdSize.MEDIUM_RECTANGLE} />
+            </View>
+          }
         />
-      </View>
+      </View> 
     );
   };
 
@@ -442,6 +454,11 @@ const styles = StyleSheet.create({
   languageTextActive: {
     color: '#fff',
     fontWeight: '600',
+  },
+  adContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
   tabContainer: {
     flexDirection: 'row',

@@ -17,6 +17,8 @@ import { useBookmark } from './BookmarkContext';
 import { CloseIcon, StarIcon, ShareIcon, ExternalLinkIcon } from './components/IconButton';
 import apiConfig from './config/api';
 import { useLanguage } from './LanguageContext';
+import MyAds from './BannerAd';
+import { BannerAdSize } from 'react-native-google-mobile-ads';
 
 // 국가별 설정
 const COUNTRY_CONFIG = {
@@ -277,6 +279,9 @@ export default function BookDetail({ route, navigation }) {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+        {/* <View style={styles.adContainer}>
+          <MyAds type="adaptive" size={BannerAdSize.BANNER} />
+        </View> */}
         {/* 책 커버 및 정보 */}
         <View style={styles.bookHeader}>
           {book.image ? (
@@ -409,6 +414,11 @@ export default function BookDetail({ route, navigation }) {
             onPress={() => setWikiModalVisible(false)} 
             activeOpacity={1}
           />
+          
+          <View style={styles.adContainer}>
+            <MyAds type="adaptive" size={BannerAdSize.LARGE_BANNER} />
+          </View>
+
           <View style={styles.modalContent}>
             <TouchableOpacity 
               style={styles.closeModalButton}
@@ -468,6 +478,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  adContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
   bookImage: {
     width: 120,
@@ -653,7 +668,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   modalContent: {
-    height: '75%',
+    height: '80%',
     width: '100%',
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
