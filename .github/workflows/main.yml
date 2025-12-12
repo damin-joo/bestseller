@@ -2,7 +2,8 @@ name: Web Scrapper Runner
 
 on:
   schedule:
-    - cron: "0 23 * * *"   # 23:00 UTC = 08:00 KST next day
+    - cron: "0 6 * * *"    # 06:00 UTC = 01:00 Toronto (EST)
+    # - cron: "0 23 * * *"   # 23:00 UTC = 08:00 KST next day
   workflow_dispatch:
 
 jobs:
