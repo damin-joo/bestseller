@@ -4,14 +4,13 @@ import { GoogleAuth } from "google-auth-library";
 
 // Helper: read JSON and format rows
 function readBooksJSON(filename) {
-  const jsonPath = `./json_results/${filename}`;
+  const jsonPath = path.join(process.cwd(), 'json_results', filename);
   if (!fs.existsSync(jsonPath)) {
     console.error(`⚠️ File not found: ${jsonPath}`);
     return [];
   }
 
   const data = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
-
   const rows = data.map((book) => [
     book.image || "",
     book.link || "",
