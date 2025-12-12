@@ -27,9 +27,10 @@ function readBooksJSON(filename) {
 
 // Batch update multiple sheets
 async function batchUpdateValues(spreadsheetId, valueInputOption, data) {
+  const key = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
   const auth = new GoogleAuth({
-    keyFile: "./credentials.json", // service account JSON
-    scopes: "https://www.googleapis.com/auth/spreadsheets",
+    keyFile: key, // service account JSON
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
   const sheets = google.sheets({ version: "v4", auth });
