@@ -82,7 +82,7 @@ export default async function amazonScrapper() {
         });
     }
 
-    const resultPath = path.join(process.cwd(), './json_results/france.json');
+    const resultPath = path.join(process.cwd(), '../backend/json_results/france.json');
     const sanitized = books.map(toPublicBook);
     fs.writeFileSync(resultPath, JSON.stringify(sanitized, null, 2), 'utf-8');
 
