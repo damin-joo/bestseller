@@ -82,7 +82,14 @@ export default async function amazonScrapper() {
         });
     }
 
-    const resultPath = path.join(process.cwd(), '../backend/json_results/france.json');
+    const outputDir = path.join(process.cwd(), 'json_results'); // Use project root json_results
+
+    // Create folder if it doesn't exist
+    if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+    }
+    // Then write file
+    const resultPath = path.join(outputDir, 'france.json');
     const sanitized = books.map(toPublicBook);
     fs.writeFileSync(resultPath, JSON.stringify(sanitized, null, 2), 'utf-8');
 
