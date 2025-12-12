@@ -4,7 +4,7 @@ import { google } from "googleapis";
 import { GoogleAuth } from "google-auth-library";
 
 function readBooksJSON(filename) {
-  const jsonPath = path.join(process.cwd(), "../json_results", filename);
+  const jsonPath = path.join(process.cwd(), "json_results", filename);
 
   if (!fs.existsSync(jsonPath)) {
     console.error(`⚠️ File not found: ${jsonPath}`);
